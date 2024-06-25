@@ -163,7 +163,6 @@ cp /etc/ceph/ceph.conf /etc/kolla/config/nova/
 ## 12. Execute deployment command 
 ```
 # run only on node deployer
-kolla-genpwd
 kolla-ansible -i ./multinode certificates
 kolla-ansible -i ./multinode bootstrap-servers
 kolla-ansible -i ./multinode prechecks
