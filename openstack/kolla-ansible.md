@@ -1,7 +1,7 @@
 ## 1. Install package dependency for Openstack
 ```
 # run only on node deployer (aka controller001)
-apt-get install python3-dev libffi-dev gcc libssl-dev python3-selinux python3-setuptools python3-venv -y
+apt-get install git python3-dev libffi-dev gcc libssl-dev python3-selinux python3-setuptools python3-venv -y
 ```
 
 ## 2. Create virtaul environment
@@ -17,8 +17,8 @@ source os-venv/bin/activate
 ```
 # run only on node deployer
 pip install -U pip
-pip install 'ansible>=6,<8'
-pip install git+https://opendev.org/openstack/kolla-ansible@master
+pip install 'ansible-core>=2.15,<2.16.99'
+pip install git+https://opendev.org/openstack/kolla-ansible@stable/2024.1
 ```
 
 ## 4. Install ansible galaxy 
@@ -163,6 +163,7 @@ cp /etc/ceph/ceph.conf /etc/kolla/config/nova/
 ## 12. Execute deployment command 
 ```
 # run only on node deployer
+kolla-genpwd
 kolla-ansible -i ./multinode certificates
 kolla-ansible -i ./multinode bootstrap-servers
 kolla-ansible -i ./multinode prechecks
