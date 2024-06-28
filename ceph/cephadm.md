@@ -81,9 +81,20 @@ ceph orch apply osd --all-available-devices
 ```
 ceph -s
 ceph osd pool create volumes
+ceph osd pool set volumes size 2
+ceph osd pool set volumes min_size 1
+
 ceph osd pool create images
+ceph osd pool set images size 2
+ceph osd pool set images min_size 1
+
 ceph osd pool create backups
+ceph osd pool set backups size 2
+ceph osd pool set backups min_size 1
+
 ceph osd pool create vms
+ceph osd pool set vms size 2
+ceph osd pool set vms min_size 1
 
 rbd pool init volumes
 rbd pool init images
